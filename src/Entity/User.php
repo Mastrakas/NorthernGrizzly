@@ -3,14 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -20,40 +19,20 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=180, unique=true)
      */
     private $pseudo;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="json")
      */
-    private $email;
+    private $roles = [];
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
     private $password;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Role::class, inversedBy="users")
-     */
-    private $roleID;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Commentary::class, mappedBy="author")
-     */
-    private $commentaries;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="author")
-     */
-    private $articles;
-
-    public function __construct()
-    {
-        $this->commentaries = new ArrayCollection();
-        $this->articles = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -72,21 +51,41 @@ class User
         return $this;
     }
 
-    public function getEmail(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
     {
-        return $this->email;
+        return (string) $this->pseudo;
     }
 
-    public function setEmail(string $email): self
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        $this->email = $email;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
     {
-        return $this->password;
+        return (string) $this->password;
     }
 
     public function setPassword(string $password): self
@@ -96,16 +95,37 @@ class User
         return $this;
     }
 
-    public function getRoleID(): ?int
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
     {
-        return $this->roleID;
+        // not needed when using the "bcrypt" algorithm in security.yaml
     }
 
-    public function setRoleID(int $roleID): self
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
     {
-        $this->roleID = $roleID;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
 
-        return $this;
+    /**
+     * @ORM\OneToMany(targetEntity=Commentary::class, mappedBy="author")
+     */
+    private $commentaries;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="author")
+     */
+    private $articles;
+
+    public function __construct()
+    {
+        $this->commentaries = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     /**
@@ -167,4 +187,5 @@ class User
 
         return $this;
     }
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,11 +13,15 @@ class AdminArticleController extends AbstractController{
      */
     public function articlelist (ArticleRepository $articleRepository){
         $articlesActu = $articleRepository->findBy(
-            ['type_article' => 'actu']);
+            ['type_article' => '1']);
 
-        return $this->render('articlelist.html.twig',
+        $articlesTraining = $articleRepository->findBy(
+            ['type_article' => '2']);
+
+        return $this->render('Admin/articlelist.html.twig',
         [
-            'articlesActu'=>$articlesActu
+            'articlesActu'=>$articlesActu,
+            'articlesTraining'=>$articlesTraining
         ]);
     }
 }

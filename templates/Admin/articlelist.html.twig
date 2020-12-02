@@ -8,8 +8,14 @@
     <title>Document</title>
 </head>
 <body>
-    {% for articleActu in articlesActu %}
-        {{ articleActu.title }}<br>{{ articleActu.summary }}
+    {% for article in articlesActu %}
+        <p>{{ article.title }}</p><p>{{ article.summary }}</p>
+    {% endfor %}
+
+    <hr>
+
+    {% for training in articlesTraining %}
+        <p>{{ training.title }}</p><p>{{ training.summary }}</p>
     {% endfor %}
 </body>
 </html>
