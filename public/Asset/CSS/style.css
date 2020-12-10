@@ -1,5 +1,45 @@
+@font-face{
+    font-family: 'bullet';
+    src: url('../Font/bullet_journal/BulletJournal.ttf') format('truetype');
+}
+*{
+    font-family: 'bullet', serif;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+}
 .presentation{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.boitelogo{
+    margin: 0 auto;
+    width: 150px;
+}
+header{
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: #d6d6fc;
+    color: #7387a0;
+}
+header nav a{
+    text-decoration: none;
+    color: #0a1042;
+    font-size: 1.6em;
+    transition: 0.25s ease;
+}
+header nav a:hover{
+    background-color: #0a1042;
+    text-decoration: none;
+}
+header nav a:hover li{
+    color: #d6d6fc;
+}
+header nav a li{
+    text-align: center;
+    transition: 0.25s ease;
 }

@@ -1,12 +1,37 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<!doctype html>
+<html lang=fr>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Nicolas Bluneau">
+    <meta name="description" content="Mon site parle des jeux vidéos" />
+    <meta name="keywords" content="jeux vidéos, console, pc, gamer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('Asset/CSS/style.css') }}">
+    <title>{% block title %}mon title{% endblock %}</title>
+</head>
+<body>
+    {% block header %}
+        <header>
+            <div class="boitelogo py-1"><a href="{{ path('home') }}"><img src="{{ asset('Asset/IMG/JPG/logoPourFondSombre.jpg') }}" class="img-fluid rounded-pill"></a></div>
+            <nav class="container-fluid">
+                <ul class="row justify-content-around list-unstyled my-0">
+                    <a href="index.html" class="col-2 px-0 py-1"><li class="w-100">Accueil</li></a>
+                    <a href="actus.html" class="col-2 px-0 py-1"><li class="w-100">Actus et Conseils</li></a>
+                    <a href="entrainements.html" class="col-2 px-0 py-1"><li class="w-100">Articles Entrainements</li></a>
+                    <a href="forum.html" class="col-2 px-0 py-1"><li class="w-100">Contact</li></a>
+                    <a href="{{ path('admin_article_list') }}" class="col-2 px-0 py-1"><li class="w-100">Se coco maggle</li></a>
+                </ul>
+            </nav>
+        </header>
+    {% endblock %}
+
+    {% block main %}
+
+    {% endblock %}
+
+</body>
 </html>
