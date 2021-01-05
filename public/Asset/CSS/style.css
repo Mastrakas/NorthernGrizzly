@@ -72,6 +72,10 @@ footer ul li {
     background-color: #0a1042;
     color: white;
 }
+.boitelogo {
+    margin: 0 auto;
+    width: 150px;
+}
 .voirlarticle {
     background-color: white;
     border-radius: 50px;
@@ -87,4 +91,23 @@ footer ul li {
     bottom: 0;
     right: 0;
     padding-right: 15px;
+    color: #0a1042;
+}
+.lienforum:hover {
+    text-decoration: none;
+    color: #d6d6fc;
+}
+.login{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border: 3px solid #0a1042;
+    background-color: #d6d6fc;
+}
+.zonetext{
+    width: 90%;
+}
+.bouton{
+    background-color: #0a1042;
+    color: white;
+    font-family: 'bullet';
 }
