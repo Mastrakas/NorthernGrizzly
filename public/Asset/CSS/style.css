@@ -2,16 +2,10 @@
     font-family: 'bullet';
     src: url('../Font/bullet_journal/BulletJournal.ttf') format('truetype');
 }
-*{
-    font-family: 'bullet', serif;
-}
-
-p{
+b{
     font-family: Arial, Helvetica, sans-serif;
 }
 .presentation{
-    display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 .boitelogo{
@@ -25,6 +19,13 @@ header{
     z-index: 100;
     background-color: #d6d6fc;
     color: #7387a0;
+    font-family: 'bullet';
+}
+h1{
+    font-family: 'bullet';
+}
+.section{
+
 }
 header nav a{
     text-decoration: none;
@@ -42,4 +43,48 @@ header nav a:hover li{
 header nav a li{
     text-align: center;
     transition: 0.25s ease;
+}
+footer {
+    background-color: grey;
+}
+footer ul {
+    margin-bottom: 0;
+}
+footer ul li {
+    color: white;
+    font-size: 1.2em;
+}
+.block1{
+    align-items: center;
+    text-align: center;
+    border: 1px grey solid;
+    padding-left: 0;
+    padding-right: 0;
+}
+.block2{
+    align-items: center;
+    text-align: center;
+    border: 1px grey solid;
+    padding-left: 0;
+    padding-right: 0;
+}
+.box{
+    background-color: #0a1042;
+    color: white;
+}
+.voirlarticle {
+    background-color: white;
+    border-radius: 50px;
+    width: 25%;
+    margin: auto;
+}
+.voirlarticle a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+.lienforum {
+    bottom: 0;
+    right: 0;
+    padding-right: 15px;
 }

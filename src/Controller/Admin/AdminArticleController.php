@@ -69,4 +69,59 @@ class AdminArticleController extends AbstractController{
                 'user' => $user
             ]);
     }
+
+    /**
+     * @Route ("/admin/article/update/{id}", name="admin_article_update")
+     */
+
+    public function updateArticle ($id, EntityManagerInterface $entityManager, ArticleRepository $articleRepository, Request $request) {
+
+        $article = $articleRepository->find($id);
+
+        $user = $this->getUser()->getPseudo();
+        $article->setAuthor($this->getUser());
+
+        if (is_null($article)){
+            return $this->redirectToRoute('admin_article_list');
+        }
+
+        $form = $this->createForm(ArticleType::class, $article);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($article);
+            $entityManager->flush();
+
+            $this->addFlash('success','article modifié');
+
+            return $this->redirectToRoute('admin_article_list');
+        }
+
+        $formView = $form->createView();
+
+        return $this->render('Admin/article_update.html.twig',
+            [
+                'formView' => $formView
+            ]);
+    }
+
+    /**
+     * @Route ("/admin/article/delete/{id}", name="admin_article_delete")
+     */
+    public function deleteArticle ($id, ArticleRepository $articleRepository, EntityManagerInterface $entitymanager) {
+        $article = $articleRepository->find($id);
+
+        if (!is_null($article)) {
+            $entitymanager->remove($article);
+            $entitymanager->flush();
+
+            $this->addFlash(
+                'success',
+                "l'article a bien été supprimé"
+            );
+        }
+
+        return $this->redirectToRoute('admin_article_list');
+    }
 }

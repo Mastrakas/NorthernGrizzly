@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang=fr>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Nicolas Bluneau">
+    <meta name="description" content="Mon site parle des jeux vidéos" />
+    <meta name="keywords" content="jeux vidéos, console, pc, gamer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('Asset/CSS/style.css') }}">
+    <title>{% block title %}mon title{% endblock %}</title>
+</head>
+<body>
+{% block header %}
+    <header>
+        <div class="boitelogo py-1"><img src="{{ asset('Asset/IMG/JPG/logoPourFondSombre.jpg') }}" class="img-fluid rounded-pill"></div>
+        <nav class="container-fluid">
+            <ul class="row justify-content-around list-unstyled my-0">
+                <a href="{{ path('admin_article_insert') }}" class="col-2 px-0 py-1"><li class="w-100">Ajouter un article</li></a>
+                <a href="{{ path('app_logout') }}" class="col-2 px-0 py-1"><li class="w-100">Se Déconnecter</li></a>
+            </ul>
+        </nav>
+    </header>
+{% endblock %}
+
+{% block main %}
+
+{% endblock %}
+
+</body>
+</html>

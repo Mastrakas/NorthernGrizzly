@@ -10,7 +10,7 @@
     <meta name="keywords" content="jeux vidéos, console, pc, gamer" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('Asset/CSS/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Asset/CSS/style.css') }}">
     <title>{% block title %}mon title{% endblock %}</title>
 </head>
 <body>
@@ -19,11 +19,11 @@
             <div class="boitelogo py-1"><a href="{{ path('home') }}"><img src="{{ asset('Asset/IMG/JPG/logoPourFondSombre.jpg') }}" class="img-fluid rounded-pill"></a></div>
             <nav class="container-fluid">
                 <ul class="row justify-content-around list-unstyled my-0">
-                    <a href="index.html" class="col-2 px-0 py-1"><li class="w-100">Accueil</li></a>
-                    <a href="actus.html" class="col-2 px-0 py-1"><li class="w-100">Actus et Conseils</li></a>
-                    <a href="entrainements.html" class="col-2 px-0 py-1"><li class="w-100">Articles Entrainements</li></a>
+                    <a href="{{ path('home') }}" class="col-2 px-0 py-1"><li class="w-100">Accueil</li></a>
+                    <a href="{{ path('actu') }}" class="col-2 px-0 py-1"><li class="w-100">Actus et Conseils</li></a>
+                    <a href="{{ path('training') }}" class="col-2 px-0 py-1"><li class="w-100">Articles Entrainements</li></a>
                     <a href="forum.html" class="col-2 px-0 py-1"><li class="w-100">Contact</li></a>
-                    <a href="{{ path('admin_article_list') }}" class="col-2 px-0 py-1"><li class="w-100">Se coco maggle</li></a>
+                    <a href="{{ path('admin_article_list') }}" class="col-2 px-0 py-1"><li class="w-100">Se connecter</li></a>
                 </ul>
             </nav>
         </header>
@@ -31,6 +31,26 @@
 
     {% block main %}
 
+    {% endblock %}
+
+    {% block footer %}
+        <footer>
+            <nav class="row justify-content-between align-items-center py-3 mx-5">
+                <ul class="col-3 list-unstyled">
+                    <li>Informations légales</li>
+                    <li>C.G.U.</li>
+                    <li>Contact</li>
+                </ul>
+                <div class="col-2 text-center boitelogo"><img src="{{ asset('Asset/IMG/JPG/logoPourFondSombre.jpg') }}" class="img-fluid rounded-pill"></div>
+                <div class="col-3">
+                    <ul class="row justify-content-around list-unstyled">
+                        <li class="offset-6 col-2"><img src="{{ asset('Asset/IMG/PNG/fb.png') }}" alt="" class="img-fluid w-1"></li>
+                        <li class="col-2"><img src="{{ asset('Asset/IMG/PNG/insta.png') }}" alt="" class="img-fluid w-1"></li>
+                        <li class="col-2"><img src="{{ asset('Asset/IMG/PNG/twitter.png') }}" alt="" class="img-fluid w-1"></li>
+                    </ul>
+                </div>
+            </nav>
+        </footer>
     {% endblock %}
 
 </body>

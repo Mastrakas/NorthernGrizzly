@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+{% block title %}Actus et Conseils{% endblock %}
+
+{% block main %}
+
+    <div class="block1 w-100">
+        <h1 class="box text-center py-2 m-0 text-capitalize font-weight-bold">Dernières Actualités</h1>
+
+        <div class="container p-0">
+            <div class="row justify-content-center align-items-center my-3 mx-0">
+                {% for article in articlesActu %}
+
+                    {% if loop.index is divisible by(2) %}
+
+                        <div class="col-10 col-md-4 my-3 my-md-0 img-art">
+                            <img src="{{ asset('Asset/IMG/PNG/snow.png') }}" alt="" class="img-fluid">
+                        </div>
+
+                        <div class="col-10 col-md-8 my-3 my-md-0 presentation">
+                            <b>{{ article.title }}</b>
+                            <p>{{ article.summary }}</p>
+                            <div class="voirlarticle"><a href="">Voir l'article</a></div>
+                        </div>
+
+                    {% else %}
+
+                        <div class="col-10 col-md-8 my-3 my-md-0 presentation">
+                            <b>{{ article.title }}</b>
+                            <p>{{ article.summary }}</p>
+                            <div class="voirlarticle"><a href="">Voir l'article</a></div>
+                        </div>
+
+                        <div class="col-10 col-md-4 my-3 my-md-0 img-art">
+                            <img src="{{ asset('Asset/IMG/PNG/snow.png') }}" alt="" class="img-fluid">
+                        </div>
+
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
